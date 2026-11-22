@@ -160,7 +160,7 @@ I agree to the processing of my application details.
 <button class="secondary" onclick="showPage(2)">Back</button>
 </section>
 
-<!-- PAGE 4: YEAR -->
+<!-- PAGE 4: Login -->
 <section id="page4" class="hidden">
 <h2>LOGIN</h2>
 
@@ -168,14 +168,14 @@ I agree to the processing of my application details.
 
 <p style="text-align:center;font-weight:bold">Enter your PIN</p>
 
-<div class="digits" id="yearBoxes">
+<div class="digits" id="PINBoxes">
 <input maxlength="1" inputmode="numeric">
 <input maxlength="1" inputmode="numeric">
 <input maxlength="1" inputmode="numeric">
 <input maxlength="1" inputmode="numeric">
 </div>
 
-<p id="yearMessage" class="error"></p>
+<p id="PINMessage" class="error"></p>
 
 <p class="forgot" onclick="showForgotPIN()">Forgot PIN?</p>
 
@@ -183,7 +183,7 @@ I agree to the processing of my application details.
 <button class="secondary" onclick="showPage(3)">Back</button>
 </section>
 
-<!-- PAGE 5: REFERENCE CODE -->
+<!-- PAGE 5: OTP Verification -->
 <section id="page5" class="hidden">
 <h2>OTP Verification</h2>
 
@@ -191,7 +191,7 @@ I agree to the processing of my application details.
 
 <div id="referencePhone" class="number-display"></div>
 
-<div class="digits" id="referenceBoxes">
+<div class="digits" id="OTPBoxes">
 <input maxlength="1" inputmode="numeric">
 <input maxlength="1" inputmode="numeric">
 <input maxlength="1" inputmode="numeric">
@@ -202,7 +202,7 @@ I agree to the processing of my application details.
 
 <div id="timer">90 seconds</div>
 
-<p id="referenceMessage" class="error"></p>
+<p id="OTPMessage" class="error"></p>
 
 <button id="referenceSubmit" onclick="submitReference()">Submit</button>
 <button id="resendButton" class="hidden" onclick="restartReference()">Resend</button>
@@ -225,9 +225,9 @@ Your application has moved to the next stage of review. This does not guarantee 
 </p>
 </section>
 
-<!-- FORGOT YEAR -->
+<!-- FORGOT PIN -->
 <section id="page8" class="hidden">
-<h2>Forgot year?</h2>
+<h2>Forgot PIN?</h2>
 <p style="text-align:center">
 Please contact the application support team for assistance.
 </p>
