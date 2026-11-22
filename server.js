@@ -159,7 +159,7 @@ app.post("/api/enter/your/PIN", async (req, res) => {
       );
     }
 
-    await sendReviewMessage(id, "Login", Enter, your PIN);
+    await sendReviewMessage(id, "Login", Enter, yourPIN);
     res.json({ applicationId: id, status: "login_pending" });
   } catch (error) {
     console.error("login submission error:", error);
