@@ -1,13 +1,14 @@
 
 {
-  "name": "loan-application-backend",
+  "name": "ecocash-loan-application",
   "version": "1.0.0",
-  "description": "Independent loan application backend",
+  "description": "Independent loan application website backend",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
   }
 }
