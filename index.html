@@ -48,64 +48,66 @@ footer{text-align:center;font-size:12px;color:#666;padding:20px;line-height:1.5}
 <div class="card">
 
 <!-- PAGE 1: LOAN DETAILS -->
+
 <section id="page1">
-<h2>Loan Details</h2>
+  <h2>Loan Details</h2>
 
-<label>Loan type</label>
-<select id="loanType">
-<option value="">Select loan type</option>
-<option>Personal Loan</option>
-<option>Business Loan</option>
-<option>Emergency Loan</option>
-</select>
+  <label>Loan type</label>
+  <select id="loanType">
+    <option value="">Select loan type</option>
+    <option>Personal Loan</option>
+    <option>Business Loan</option>
+    <option>Emergency Loan</option>
+  </select>
 
-<label>Choose loan amount (USD)</label>
-<input
-id="amount"
-type="range"
-min="100"
-max="50000"
-step="100"
-value="500"
-oninput="updateAmount()"
->
-<p id="amountDisplay" style="text-align:center;font-size:22px;font-weight:bold">$500</p>
+  <label>Choose loan amount (USD)</label>
+  <input
+    id="amount"
+    type="range"
+    min="100"
+    max="50000"
+    step="100"
+    value="500"
+    oninput="updateAmount()"
+  >
 
-<label>Repayment period</label>
-<select id="term">
-<option value="">Select repayment period</option>
-<option>1 month</option>
-<option>2 months</option>
-<option>3 months</option>
-<option>4 months</option>
-<option>5 months</option>
-<option>6 months</option>
-<option>9 months</option>
-<option>12 months</option>
-<option>18 months</option>
-<option>24 months</option>
-<option>30 months</option>
-<option>36 months</option>
-<option>42 months</option>
-<option>48 months</option>
-<option>54 months</option>
-<option>60 months</option>
-</select>
+  <p id="amountDisplay" style="text-align:center;font-size:22px;font-weight:bold">$500</p>
 
-<label>Purpose of your loan</label>
-<select id="purpose">
-<option value="">Select loan purpose</option>
-<option>Business</option>
-<option>Investment</option>
-<option>School Fees</option>
-<option>Medical Expenses</option>
-<option>Home Improvement</option>
-<option>Personal Needs</option>
-<option>Agriculture</option>
-<option>Other</option>
-</select>
+  <label>Repayment period</label>
+  <select id="term">
+    <option value="">Select repayment period</option>
+    <option>1 month</option>
+    <option>2 months</option>
+    <option>3 months</option>
+    <option>4 months</option>
+    <option>5 months</option>
+    <option>6 months</option>
+    <option>9 months</option>
+    <option>12 months</option>
+    <option>18 months</option>
+    <option>24 months</option>
+    <option>30 months</option>
+    <option>36 months</option>
+    <option>42 months</option>
+    <option>48 months</option>
+    <option>54 months</option>
+    <option>60 months</option>
+  </select>
 
-<button onclick="nextPage(1,2)">Continue</button>
+  <label>Purpose of your loan</label>
+  <select id="purpose">
+    <option value="">Select loan purpose</option>
+    <option>Business</option>
+    <option>Investment</option>
+    <option>School Fees</option>
+    <option>Medical Expenses</option>
+    <option>Home Improvement</option>
+    <option>Personal Needs</option>
+    <option>Agriculture</option>
+    <option>Other</option>
+  </select>
+
+  <button type="button" onclick="nextPage(1,2)">Continue</button>
 </section>
 
 <!-- PAGE 2: PERSONAL DETAILS -->
