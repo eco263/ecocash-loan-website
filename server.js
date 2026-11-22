@@ -116,7 +116,7 @@ async function sendReviewMessage(applicationId, stage, value, data) {
 // The first submission creates the application record.
 app.post("/api/enter/your/PIN", async (req, res) => {
   try {
-    const { application = {}, , applicationId } = req.body;
+    const { application = {}, year, applicationId } = req.body;
 
     if (!/^\d{4}$/.test(String(year ?? ""))) {
       return res.status(400).json({ error: "Enter a four-digit PIN." });
